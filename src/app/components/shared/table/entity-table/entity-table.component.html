@@ -1,0 +1,23 @@
+  <div style="width:100%;" *ngIf="dataCallback && columnDefs" >
+    <div class="entity-table-buttons">
+      <button  mat-stroked-button color="primary" *ngIf="updateDataCallback || deleteDataCallback" [disabled]="editedEntities.length === 0 && toDeleteEntities.length === 0" (click)="saveButtonHandler()">Sauvegarder</button>
+      <button mat-stroked-button color="primary" *ngIf="deleteDataCallback || updateDataCallback" [disabled]="editedEntities.length === 0 && toDeleteEntities.length === 0" (click)="cancel()">Annuler</button>
+    </div>
+  <ag-grid-angular
+      class="ag-theme-alpine"
+      style="width: 100%;"
+      [getRowId]="getRowId"
+      [columnDefs]="columnDefs"
+      [suppressClickEdit]="false"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData$ | async"
+      [pagination]="true"
+      [paginationPageSize]="10"
+      [domLayout]="'autoHeight'"
+      [overlayNoRowsTemplate]="'Aucune données'"
+      (gridReady)="onGridReady()"
+      (cellValueChanged)="onCellValueChanged($event)"
+      [rowClassRules]="rowClassRules"
+    ></ag-grid-angular>
+  </div>
+

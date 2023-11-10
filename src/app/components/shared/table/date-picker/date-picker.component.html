@@ -1,0 +1,15 @@
+<mat-form-field>
+  <mat-label >Saisir une date</mat-label>
+  <input
+    [readonly]="true"
+    type="text"
+    [(ngModel)]="inputDate"
+    matInput [matDatepicker]="picker"
+  />
+
+  <!--          [min]="field.options['min']" [max]="field.options['max']"-->
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker startView="multi-year" ></mat-datepicker>
+
+  <mat-hint>JJ/MM/AAAA</mat-hint>
+</mat-form-field>

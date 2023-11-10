@@ -1,0 +1,63 @@
+<section *ngIf="form && field && !field.hide(form)"  [formGroup]='form'>
+  <mat-form-field *ngIf="field.controlType !== 'radio' && field.controlType !== 'date'" >
+    <mat-label >{{ field.label }}</mat-label>
+    <section [ngSwitch]='field.controlType'>
+
+      <input *ngSwitchCase="'textbox'" [formControlName]='field.key'
+       type="text"
+       [id]='field.key' [type]='field.type' [value]="field.value ? String(field.value) : ''"
+       matInput>
+      <input *ngSwitchCase="'number'"
+             type="number"
+             [formControlName]='field.key'
+
+             [id]='field.key'
+             [min]="field.min !== undefined ? ''+field.min : null" [max]="field.max !== undefined ? ''+field.max : null"
+             matInput>
+      <mat-select [value]="field.value ? String(field.value) : ''" *ngSwitchCase="'dropdown'" [id]='field.key' [formControlName]='field.key'>
+        <mat-option *ngFor='let opt of field.options' [value]='opt.key'>{{ opt.value }}</mat-option>
+      </mat-select>
+      <textarea
+        *ngSwitchCase="'textarea'"
+        matInput
+        [id]='field.key'
+        [formControlName]='field.key'
+        [value]="field.value ? String(field.value) : ''"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+      ></textarea>
+      <!--    <input *ngSwitchCase="'checkbox'" type='checkbox' [id]='field.key' [name]='field.key'-->
+      <!--      [formControlName]='field.key'/>-->
+
+
+
+
+    </section>
+    <mat-error *ngIf="!form.controls[field.key].valid">{{this.formService.getErrorMessage(form.controls[field.key])}}</mat-error>
+  </mat-form-field>
+  <mat-radio-group *ngIf="field.controlType === 'radio'"
+    [formControlName]="field.key">
+    <mat-radio-button *ngFor="let opt of field.options" name="" [value]="opt.key" >
+      {{opt.value}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field *ngIf="field.controlType === 'date'">
+    <mat-label >{{ field.label }}</mat-label>
+    <input
+      [readonly]="true"
+      type="text" [id]='field.key'
+      [name]="field.key"
+      [formControlName]="field.key"
+      matInput [matDatepicker]="picker"
+    />
+
+    <!--          [min]="field.options['min']" [max]="field.options['max']"-->
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker startView="multi-year" ></mat-datepicker>
+
+    <mat-hint>JJ/MM/AAAA</mat-hint>
+  </mat-form-field>
+</section>
+

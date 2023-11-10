@@ -1,0 +1,12 @@
+@import "/src/styles";
+#form-wrapper {
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  @include media-max('tablet-down') {
+    width: 75%;
+  }
+  @include media-max('phone-down') {
+    width: 90%;
+  }
+}

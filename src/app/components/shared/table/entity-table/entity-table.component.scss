@@ -1,0 +1,40 @@
+.entity-table-buttons {
+  margin-bottom: 10px;
+}
+.ag-input-field-input .ag-checkbox-input {
+  background-color: red;
+}
+.ag-body {
+  .ag-row {
+    .ag-cell {
+      input[type=checkbox]:checked:after,
+      input[type=radio]:checked:after {
+        display: none;
+      }
+      input[type=checkbox]:after, input[type=radio]:after {
+        display: none;
+      }
+    }
+  }
+}
+:host ::ng-deep .non-editable {
+  cursor: not-allowed;
+}
+
+
+:host ::ng-deep .rowIndex {
+  background-color: #3F51B5;
+  color: white;
+}
+
+//:host ::ng-deep .ag-row-even .non-editable {
+//  background-color: #eaeaea;
+//}
+//:host ::ng-deep .ag-row-odd .non-editable {
+//  background-color: #d9d9d9;
+//}
+
+::ng-deep mat-snack-bar-container.multiple-line-snackbar {
+  background: red !important;
+  white-space: pre-wrap
+}

@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String     @id @default(uuid())
+  firstname   String     @db.VarChar(50)
+  lastname    String     @db.VarChar(50)
+  birthdate   DateTime   @db.Date
+  email       String     @unique @db.VarChar(50)
+  phone       String     @db.VarChar(15)
+  maxTurnover Decimal    @db.Decimal(9, 2)
+  chargeRate  Decimal    @db.Decimal(4, 2)
+  address     String     @db.VarChar(255)
+  password    String     @db.VarChar(70)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  hashedRt    String?
+  customers   Customer[]
+}
+
+model Customer {
+  id           Int       @id @default(autoincrement())
+  customerName String    @db.VarChar(50)
+  companyName  String?   @db.VarChar(50)
+  firstname    String?   @db.VarChar(50)
+  isCompany    Boolean
+  address      String    @db.VarChar(255)
+  phone        String    @db.VarChar(15)
+  email        String    @db.VarChar(50)
+  provider     User      @relation(fields: [providerId], references: [id])
+  providerId   String
+  projects     Project[]
+}
+
+model Project {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(30)
+  status     Int       @default(0) // 0: cancelled, 1: prospect, 2: devis sent, devis accepted, 3: started, 4: done
+  customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId Int?
+}

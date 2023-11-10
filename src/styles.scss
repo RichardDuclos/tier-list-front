@@ -1,0 +1,115 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$front-end-primary: mat.define-palette(mat.$indigo-palette);
+$front-end-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$front-end-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$front-end-theme: mat.define-light-theme((
+  color: (
+    primary: $front-end-primary,
+    accent: $front-end-accent,
+    warn: $front-end-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($front-end-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+$breakpoints: (
+  "phone-down": 500px,
+  "tablet-up": 768px,
+  "tablet-down": 900px,
+  "desktop-up": 1024px,
+  "desktop-down": 1280px,
+  "widescreen-up": 1440px
+);
+
+
+/* from… */
+@mixin media-min($_key) {
+  @media screen
+  and (min-width: map-get($breakpoints, $_key)) {
+    &{ @content; }
+  }
+}
+
+/* to… */
+@mixin media-max($_key) {
+  @media screen
+  and (max-width: map-get($breakpoints, $_key) - 1) {
+    &{ @content; }
+  }
+}
+
+/* from… to… */
+@mixin media-between($_keymin, $_keymax) {
+  @media screen
+  and (min-width: map-get($breakpoints, $_keymin))
+  and (max-width: map-get($breakpoints, $_keymax) - 1) {
+    &{ @content; }
+  }
+}
+
+/* at… */
+@mixin media($_key) {
+  @media screen
+  and (min-width: map-get($breakpoints, $_key))
+  and (max-width: map-get(
+        $breakpoints,
+        nth(map-keys($breakpoints), index(map-keys($breakpoints), $_key) + 1)
+      ) - 1) {
+    &{ @content; }
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-error {
+  font-size: var(--mdc-typography-caption-font-size, 12px);
+  height: auto;
+}
+mat-form-field {
+  width: 100%;
+}
+
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+// regular style toast
+@import 'ngx-toastr/toastr';
+
+.ngx-toastr {
+  width: 600px !important;  // Specify toastr-dialog width for all devices
+}

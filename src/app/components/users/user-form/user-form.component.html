@@ -1,0 +1,6 @@
+<app-dynamic-form *ngIf="myForm"
+                  [formFields]="myForm"
+                  [submitText]=" type === 'create' ? 'Créer l\'utilisateur' : 'Mettre à jour'"
+                  [onSubmit]="onSubmit"
+                  [allowErrorOnStart]="true"
+/>

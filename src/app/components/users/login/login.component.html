@@ -1,0 +1,37 @@
+<div style="padding-top: 100px;">
+  <mat-card style="max-width: 500px; margin: auto;">
+    <mat-card-content>
+      <form *ngIf="loginForm" style="padding: 20px;" [formGroup]="loginForm" novalidate>
+        <div>
+          <mat-form-field>
+            <mat-label>Nom d'utilisateur</mat-label>
+            <input type="username" id="username" placeholder="Nom"
+                   formControlName="username" name="username"
+                   matInput>
+            <mat-error *ngIf="loginForm.controls.username.invalid">{{this.formService.getErrorMessage(loginForm.controls.username)}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Mot de passe</mat-label>
+            <input [type]="hide? 'password' : 'text'" id="plainpassword"
+                   formControlName="plainpassword"
+                   name="plainpassword"
+                   matInput>
+            <mat-error *ngIf="loginForm.controls.plainpassword.invalid">{{this.formService.getErrorMessage(loginForm.controls.plainpassword)}}</mat-error>
+            <button
+              (click)="hide = !hide"
+              mat-icon-button matSuffix>
+              <mat-icon>{{ hide ? 'visibility_off': 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div>
+          <button (click)="login()" mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Connexion</button>
+        </div>
+        <div id="wrong-ids" *ngIf="failed">Identifiants incorrects</div>
+      </form>
+      <div>Pas encore de compte ? <a [routerLink]="'/register'">Inscrivez vous</a></div>
+    </mat-card-content>
+  </mat-card>
+</div>

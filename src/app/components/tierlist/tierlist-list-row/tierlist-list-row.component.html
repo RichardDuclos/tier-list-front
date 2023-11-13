@@ -1,0 +1,6 @@
+<mat-list-item *ngIf="tierList">
+  <mat-icon matListItemIcon >{{ tierList.draft ? 'edit' : 'list' }}</mat-icon>
+  <div matListItemTitle>{{tierList.name}}</div>
+  <div matListItemMeta>Par {{tierList.owner!.username}}</div>
+</mat-list-item>
+<mat-divider></mat-divider>

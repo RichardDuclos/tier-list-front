@@ -16,7 +16,7 @@ export class UserService {
   create(
     user: User
   ): Observable<User>{
-    return this.http.post<User>(`${this.apiUrl}/user`, user)
+    return this.http.post<User>(`${this.apiUrl}/auth/register`, user)
   }
 
   get(id: string): Observable<User>{

@@ -23,6 +23,9 @@ import {PipesModule} from "./pipes/pipes.module";
 import {LayoutsModule} from "./components/layouts/layouts.module";
 import {HomeComponent} from "./components/home/home.component";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import { TierlistListRowComponent } from './components/tierlist/tierlist-list-row/tierlist-list-row.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {FormsModule} from "@angular/forms";
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -40,6 +43,7 @@ export const MY_DATE_FORMATS = {
   declarations: [
     AppComponent,
     HomeComponent,
+    TierlistListRowComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,10 @@ export const MY_DATE_FORMATS = {
     }),
     PipesModule,
     LayoutsModule,
-    ],
+    MatListModule,
+    MatSlideToggleModule,
+    FormsModule,
+  ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: MY_DATE_FORMATS },
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

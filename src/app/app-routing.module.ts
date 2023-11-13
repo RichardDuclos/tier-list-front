@@ -16,7 +16,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children: [
       { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard], pathMatch: "full"  },
-      { path: '', component: HomeComponent, /*canActivate: [AuthGuard],*/ pathMatch: "full"  },
+      { path: '', component: HomeComponent, canActivate: [AuthGuard], pathMatch: "full"  },
     ]
   },
   { path: '**', component: NotfoundComponent}

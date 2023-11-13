@@ -5,6 +5,9 @@ import {SharedModule} from "../shared/shared.module";
 import {RouterOutlet} from "@angular/router";
 import {SidebarComponent} from "../shared/sidebar/sidebar.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -16,6 +19,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     CommonModule,
     SharedModule,
     RouterOutlet,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [
     SidebarComponent,

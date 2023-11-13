@@ -1,1 +1,11 @@
-<p>home works!</p>
+<mat-slide-toggle  [(ngModel)]="isChecked">Mes listes uniquement</mat-slide-toggle>
+<div *ngIf="tierLists && user">
+  <mat-selection-list>
+    <mat-divider />
+    <app-tierlist-list-row *ngFor="let tierList of tierLists"
+                           [tierList]="tierList"
+                           [hidden]="isChecked && tierList.owner!.id != user.id"
+    />
+  </mat-selection-list>
+
+</div>

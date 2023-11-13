@@ -69,7 +69,7 @@ export class SecurityService {
     if(!user) {
       return of(false);
     }
-    return this.http.get(`${this.apiUrl}/auth/infos`).pipe(
+    return this.http.get(`${this.apiUrl}/auth/me`).pipe(
       map((user: User) => {
         return true
       }),

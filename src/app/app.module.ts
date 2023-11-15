@@ -26,6 +26,10 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import { TierlistListRowComponent } from './components/tierlist/tierlist-list-row/tierlist-list-row.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {FormsModule} from "@angular/forms";
+import { TierListDetailsComponent } from './components/tierlist/tier-list-details/tier-list-details.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -44,28 +48,32 @@ export const MY_DATE_FORMATS = {
     AppComponent,
     HomeComponent,
     TierlistListRowComponent,
+    TierListDetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    UserModule,
-    PagesModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatIconModule,
-    SharedModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-center',
-      maxOpened: 5,
-    }),
-    PipesModule,
-    LayoutsModule,
-    MatListModule,
-    MatSlideToggleModule,
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        UserModule,
+        PagesModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatExpansionModule,
+        MatIconModule,
+        SharedModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-center',
+            maxOpened: 5,
+        }),
+        PipesModule,
+        LayoutsModule,
+        MatListModule,
+        MatSlideToggleModule,
+        FormsModule,
+        MatGridListModule,
+        MatTableModule,
+        MatButtonModule,
+    ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: MY_DATE_FORMATS },
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

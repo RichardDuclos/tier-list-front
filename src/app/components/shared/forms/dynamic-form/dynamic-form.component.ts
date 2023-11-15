@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormInputBase} from "../model/FormInputBase";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApiErrorInterface} from "../../../../interfaces/api-error.interface";
+import {fi} from "date-fns/locale";
 
 @Component({
   selector: 'app-dynamic-form',

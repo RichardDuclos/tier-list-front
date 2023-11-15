@@ -22,6 +22,7 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import {NgxMatColorPickerModule} from "@angular-material-components/color-picker";
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import {MatListModule} from "@angular/material/list";
         BrowserModule,
         MatSidenavModule,
         MatListModule,
+        NgxMatColorPickerModule,
     ],
   providers: [
   ]

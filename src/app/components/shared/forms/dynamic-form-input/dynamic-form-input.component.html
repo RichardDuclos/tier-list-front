@@ -17,6 +17,11 @@
       <mat-select [value]="field.value ? String(field.value) : ''" *ngSwitchCase="'dropdown'" [id]='field.key' [formControlName]='field.key'>
         <mat-option *ngFor='let opt of field.options' [value]='opt.key'>{{ opt.value }}</mat-option>
       </mat-select>
+      <span *ngSwitchCase="'colorPicker'">
+        <input matInput [ngxMatColorPicker]="picker" [formControlName]="field.key" >
+        <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+        <ngx-mat-color-picker #picker ></ngx-mat-color-picker>
+      </span>
       <textarea
         *ngSwitchCase="'textarea'"
         matInput

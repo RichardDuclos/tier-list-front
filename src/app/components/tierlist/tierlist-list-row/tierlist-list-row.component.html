@@ -1,4 +1,4 @@
-<mat-list-item *ngIf="tierList">
+<mat-list-item *ngIf="tierList" [routerLink]="'/tier-list/' + tierList.id">
   <mat-icon matListItemIcon >{{ tierList.draft ? 'edit' : 'list' }}</mat-icon>
   <div matListItemTitle>{{tierList.name}}</div>
   <div matListItemMeta>Par {{tierList.owner!.username}}</div>

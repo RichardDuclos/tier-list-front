@@ -7,6 +7,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {ProfilePageComponent} from "./components/users/profile-page/profile-page.component";
 import {AppLayoutComponent} from "./components/layouts/app-layout/app-layout.component";
 import {HomeComponent} from "./components/home/home.component";
+import {TierListDetailsComponent} from "./components/tierlist/tier-list-details/tier-list-details.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
+      { path: 'tier-list/:id', component: TierListDetailsComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard], pathMatch: "full"  },
       { path: '', component: HomeComponent, canActivate: [AuthGuard], pathMatch: "full"  },
     ]

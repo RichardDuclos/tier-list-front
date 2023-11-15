@@ -1,0 +1,21 @@
+<mat-list-item *ngIf="tierList && approve" [routerLink]="'/tier-list/' + tierList.id">
+  <mat-icon matListItemIcon >pending</mat-icon>
+  <div matListItemTitle>{{tierList.name}}</div>
+  <div matListItemMeta>
+      <span>
+        Par {{tierList.owner!.username}}
+      </span>
+    <button mat-icon-button color="primary" aria-label="Approve the tier list"
+      (click)="approve($event, tierList, true)"
+    >
+      <mat-icon>check</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" aria-label="Refuse the tier list"
+      (click)="approve($event, tierList, false)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+</mat-list-item>
+<mat-divider></mat-divider>

@@ -1,0 +1,7 @@
+Tier lists en attente
+<mat-selection-list>
+  <mat-divider />
+  <app-admin-tier-list-row *ngFor="let tierList of tierLists"
+                         [tierList]="tierList" [approve]="approve"
+  />
+</mat-selection-list>

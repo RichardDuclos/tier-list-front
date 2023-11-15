@@ -30,6 +30,8 @@ import { TierListDetailsComponent } from './components/tierlist/tier-list-detail
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminTierListRowComponent } from './components/admin/admin-tier-list-row/admin-tier-list-row.component';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -49,6 +51,8 @@ export const MY_DATE_FORMATS = {
     HomeComponent,
     TierlistListRowComponent,
     TierListDetailsComponent,
+    AdminComponent,
+    AdminTierListRowComponent,
   ],
     imports: [
         BrowserModule,

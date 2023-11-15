@@ -20,5 +20,16 @@ export class PermissionService {
       })
     )
   }
+  AdminGuardActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree>  {
+    return this.securityService.isAdmin().pipe(
+      map((result) => {
+        if(result) {
+          return true;
+        } else {
+          return this.router.createUrlTree(['/login']);
+        }
+      })
+    )
+  }
 }
 

@@ -25,6 +25,10 @@ export class TierlistService {
   update(tierList: TierList): Observable<TierList> {
     tierList.owner = undefined;
     return this.http.put<TierList>(`${this.apiUrl}/tier-lists/${tierList.id}`, tierList)
+  }
 
+  create(tierList: TierList): Observable<TierList> {
+    tierList.owner = undefined;
+    return this.http.post<TierList>(`${this.apiUrl}/tier-lists`, tierList)
   }
 }

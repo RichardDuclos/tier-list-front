@@ -69,7 +69,6 @@ export class TierListDetailsComponent implements OnInit {
   }
 
   elementSubmit: Function = () => {
-    console.log(this.dynamicElementForm?.form)
     if (!this.dynamicElementForm || !this.dynamicElementForm.form || !this.imageData) {
       return;
     }

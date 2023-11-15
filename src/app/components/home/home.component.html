@@ -1,4 +1,11 @@
-
+<a routerLink="/admin">Interface d'administration</a>
+<mat-divider />
+<app-dynamic-form
+  [formFields]="tierListForm"
+  [submitText]="'Créer une tier list'"
+  [onSubmit]="tierListSubmit"
+  #tierList
+/>
 <mat-slide-toggle  [(ngModel)]="isChecked">Mes listes uniquement</mat-slide-toggle>
 <div *ngIf="tierLists && user">
   <mat-selection-list>

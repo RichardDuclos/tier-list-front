@@ -17,8 +17,8 @@ export class LoginComponent {
   hide: boolean = true;
   failed: boolean = false;
   loginForm = this.fb.group({
-    username: ['yoo', [Validators.required]],
-    plainpassword: ['reree', Validators.required]
+    username: ['Duclos', [Validators.required]],
+    plainpassword: ['azertyuiop', Validators.required]
   })
 
   constructor(protected formService: FormService,

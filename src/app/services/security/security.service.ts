@@ -78,7 +78,20 @@ export class SecurityService {
       })
     )
   }
-
+  public isAdmin(): Observable<boolean> {
+    const user = this.getUserData();
+    if(!user) {
+      return of(false);
+    }
+    return this.http.get(`${this.apiUrl}/admin/me`).pipe(
+      map((user: User) => {
+        return true
+      }),
+      catchError((err) => {
+        return of(false);
+      })
+    )
+  }
   isLoggedOut() {
     return !this.isLoggedIn()
   }

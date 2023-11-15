@@ -1,0 +1,22 @@
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.table-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.table-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 200px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+}

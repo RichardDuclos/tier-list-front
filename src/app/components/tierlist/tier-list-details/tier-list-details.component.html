@@ -1,0 +1,49 @@
+<div *ngIf="tierList">
+  <h1>{{tierList.name}}</h1>
+  <p>{{tierList.description}}</p>
+
+  <div class="table-wrapper">
+    <div *ngFor="let rank of tierList.ranks"
+         class="table-row">
+      <div class="table-element" [ngStyle]="{backgroundColor:rank.color, position: 'relative'}">
+        <div  [ngStyle]="{backgroundColor:'white', padding:'5px', borderRadius: '5px'}">{{rank.name}}</div>
+        <div *ngIf="canEdit === true" [ngStyle]="{position: 'absolute', top: '0'}">
+          <button (click)="lowerOrder(rank)" [disabled]="tierList.ranks![0].id == rank.id">↑</button>
+        </div>
+        <div *ngIf="canEdit === true" [ngStyle]="{position: 'absolute', bottom: '0'}">
+          <button (click)="higherOrder(rank)" [disabled]="tierList.ranks![tierList.ranks!.length-1].id == rank.id">↓</button>
+        </div>
+      </div>
+      <div *ngFor="let element of rank.elements"
+        class="table-element">
+        <img [src]="getImagePath(element.imageData)">
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="canEdit">
+    <mat-divider />
+
+    <button mat-raised-button color="primary" (click)="publish(tierList)">Publier</button>
+    <mat-divider />
+
+    <h2>Ajouter un rang</h2>
+    <app-dynamic-form
+      [formFields]="rankForm"
+      [submitText]="'Ajouter le rang'"
+      [onSubmit]="rankSubmit"
+      #rank
+    />
+    <h2>Ajouter une image</h2>
+    <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+    <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+    <app-dynamic-form
+      [formFields]="elementForm"
+      [submitText]="'Ajouter l\'image'"
+      [onSubmit]="elementSubmit"
+      #element
+    />
+  </div>
+
+</div>
+
